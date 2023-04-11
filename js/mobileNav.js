@@ -1,4 +1,3 @@
-const nav = document.getElementsByTagName("nav");
 const primeNav = document.querySelector(".primary-navigation");
 const navToggle = document.querySelector(".mobile_nav_toggle");
 
@@ -42,8 +41,14 @@ navToggle.addEventListener('click', () => {
      disableScroll();
   } else{
     navToggle.setAttribute('aria-expanded', false);
-    primeNav.setAttribute('data-visible', false);
+    primeNav.setAttribute('data-visible', 'closing');
+    
+    primeNav.addEventListener('animationend', () =>{
+      primeNav.setAttribute('data-visible', false);
+    }, {once: true})
+
     enableScroll();
+    
   }
    
 })
